@@ -26,7 +26,6 @@ APP.appendChild(HEADER);
 APP.appendChild(document.createElement("main"));
 
 CREW_MANAGE_BTN.addEventListener("click", () => {
-  // TODO 크루 관리 페이지
   printCrewPage();
 });
 

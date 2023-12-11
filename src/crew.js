@@ -16,27 +16,35 @@ export function printCrewPage() {
 
   const FRONT_RADIO = document.querySelector("#frontend-course");
   FRONT_RADIO.addEventListener("change", () => {
-    sectionClear();
     printFrontCrewSection();
   });
 
   const BACK_RADIO = document.querySelector("#backend-course");
   BACK_RADIO.addEventListener("change", () => {
-    sectionClear();
     printBackCrewSection();
   });
 }
 
-function sectionClear() {
-  const LIST_SECTION = document.querySelector("#crew-list");
-  LIST_SECTION.innerHTML = "";
-}
-
-const FRONT_CREW_OBJ = {};
+const FRONT_CREW_OBJ = [];
 
 function printFrontCrewSection() {
-  //TODO Front Section
   const ADD_SECTION = document.querySelector("#crew-add");
+  ADD_SECTION.innerHTML = `
+  <h3>프론트엔드 크루 관리</h3>
+      <form>
+        <label>크루 이름</label>
+        <input id="crew-name-input" type="text" />
+        <button id="add-crew-buttton" >확인</button>
+      </form>`;
+  const CREW_ADD_BTN = document.querySelector("#add-crew-buttton");
+
+  CREW_ADD_BTN.addEventListener("click", (e) => {
+    const CREW_NAME = document.querySelector("#crew-name-input").value;
+    e.preventDefault();
+    // TODO : ERROR 이름 5자 이하
+    // TODO : ERROR 중복되었으면 실행 X 에러 배출
+    FRONT_CREW_OBJ.push(CREW_NAME);
+  });
 }
 
 const BACK_CREW_OBJ = {};

@@ -44,13 +44,25 @@ function printFrontCrewSection() {
     // TODO : ERROR 이름 5자 이하
     // TODO : ERROR 중복되었으면 실행 X 에러 배출
     FRONT_CREW_OBJ.push(CREW_NAME);
-    printAddCrew();
+    printAddCrew(FRONT_CREW_OBJ.length, CREW_NAME);
   });
 
   listingSection();
 }
 
-function printAddCrew() {}
+function printAddCrew(index, name) {
+  const CREW_TABLE = document.querySelector("#crew-table-body");
+
+  const ELEMENT = document.createElement("tr");
+  ELEMENT.innerHTML = `
+    <td>${index}</td>
+    <td>${name}</td>
+    <td>
+      <button class="delete-btn">삭제</button>
+    </td>
+    `;
+  CREW_TABLE.appendChild(ELEMENT);
+}
 
 function listingSection() {
   const LIST_SECTION = document.querySelector("#crew-list");
@@ -69,18 +81,9 @@ function listingSection() {
   </table>
   `;
 
-  const CREW_TABLE = document.querySelector("#crew-table-body");
   FRONT_CREW_OBJ.forEach((name, index) => {
     const INDEX = index + 1;
-    const ELEMENT = document.createElement("tr");
-    ELEMENT.innerHTML = `
-    <td>${INDEX}</td>
-    <td>${name}</td>
-    <td>
-      <button class="delete-btn">삭제</button>
-    </td>
-    `;
-    CREW_TABLE.appendChild(ELEMENT);
+    printAddCrew(INDEX, name);
   });
 
   const DELETE_BTNS = document.querySelectorAll(".delete-btn");

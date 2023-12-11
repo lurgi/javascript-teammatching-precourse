@@ -32,3 +32,18 @@ NAV.appendChild(TEAM_MANAGE_LI);
 HEADER.appendChild(NAV);
 
 APP.appendChild(HEADER);
+<<<<<<< HEAD
+=======
+APP.appendChild(document.createElement("main"));
+
+CREW_MANAGE_BTN.addEventListener("click", () => {
+  printCrewPage();
+});
+
+TEAM_MANAGE_BTN.addEventListener("click", () => {
+  // TODO 팀 매칭 관리 페이지
+  console.log("2");
+});
+
+printCrewPage();
+>>>>>>> 3791449 (feat(crew): 크루 추가)

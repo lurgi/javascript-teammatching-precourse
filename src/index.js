@@ -1,3 +1,5 @@
+import { printCrewPage } from "./crew.js";
+
 const APP = document.querySelector("#app");
 
 const HEADER = document.createElement("header");
@@ -12,17 +14,6 @@ const CREW_MANAGE_BTN = document.createElement("button");
 const TEAM_MANAGE_BTN = document.createElement("button");
 CREW_MANAGE_BTN.innerText = "크루 관리";
 TEAM_MANAGE_BTN.innerText = "팀 매칭 관리";
-
-CREW_MANAGE_BTN.addEventListener("click", () => {
-  // TODO 크루 관리 페이지
-  console.log("1");
-});
-
-TEAM_MANAGE_BTN.addEventListener("click", () => {
-  // TODO 팀 매칭 관리 페이지
-  console.log("2");
-});
-
 CREW_MANAGE_BTN.id = "crew-tab";
 TEAM_MANAGE_BTN.id = "team-tab";
 CREW_MANAGE_LI.appendChild(CREW_MANAGE_BTN);
@@ -32,8 +23,6 @@ NAV.appendChild(TEAM_MANAGE_LI);
 HEADER.appendChild(NAV);
 
 APP.appendChild(HEADER);
-<<<<<<< HEAD
-=======
 APP.appendChild(document.createElement("main"));
 
 CREW_MANAGE_BTN.addEventListener("click", () => {
@@ -46,4 +35,3 @@ TEAM_MANAGE_BTN.addEventListener("click", () => {
 });
 
 printCrewPage();
->>>>>>> 3791449 (feat(crew): 크루 추가)

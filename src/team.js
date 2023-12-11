@@ -28,30 +28,41 @@ export function printTeamPage() {
   });
 }
 
+const MATCH_TEAM = {};
+
 function printTeamMatchSection(course, mission) {
-  //TODO 팀 매칭 확인 및 리스팅.
-  console.log(course, mission);
+  if (MATCH_TEAM[course] && MATCH_TEAM[course][mission]) {
+    // TODO 매칭 존재 페이지
+    printMatchPage();
+    return;
+  }
+  //TODO 매칭 존재 X
+  printNonMatchPage(course);
+}
+
+function printNonMatchPage(course) {
+  const SECTION = document.querySelector("#team-match-section");
+  SECTION.innerHTML = `
+    <h3>${course} 숫자야구게임 미션의 팀 매칭</h3>
+    <div>
+      <div>
+        <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
+        <form>
+          <label>1팀당 인원 수</label>
+          <input id="team-member-count-input" type="number" />
+          <button id="match-team-button">팀 매칭</button>
+        </form>
+      </div>
+      <h4>크루 목록</h4>
+      <ul id="team-match-result">
+        <li>준</li>
+        <li>포코</li>
+      </ul>
+    </div>
+    `;
 }
 
 /*
-    <section>
-      <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
-      <div>
-        <div>
-          <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
-          <form>
-            <label>1팀당 인원 수</label>
-            <input type="number" />
-            <button>팀 매칭</button>
-          </form>
-        </div>
-        <h4>크루 목록</h4>
-        <ul>
-          <li>준</li>
-          <li>포코</li>
-        </ul>
-      </div>
-    </section>
     <!-- 팀 매칭이 된 경우 -->
     <section>
       <h3>프론트엔드 숫자야구게임 조회</h3>

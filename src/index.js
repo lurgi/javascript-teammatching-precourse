@@ -1,4 +1,5 @@
 import { printCrewPage } from "./crew.js";
+import { printTeamPage } from "./team.js";
 
 const APP = document.querySelector("#app");
 
@@ -30,8 +31,7 @@ CREW_MANAGE_BTN.addEventListener("click", () => {
 });
 
 TEAM_MANAGE_BTN.addEventListener("click", () => {
-  // TODO 팀 매칭 관리 페이지
-  console.log("2");
+  printTeamPage();
 });
 
 printCrewPage();

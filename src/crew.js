@@ -89,8 +89,13 @@ function listingSection() {
   const DELETE_BTNS = document.querySelectorAll(".delete-btn");
   for (let btn of Array.from(DELETE_BTNS)) {
     btn.addEventListener("click", (e) => {
-      // TODO 삭제 확인 및 삭제
-      console.log("dete", e.target);
+      const NAME =
+        e.target.parentNode.parentNode.querySelectorAll("td")[1].innerText;
+      const index = FRONT_CREW_OBJ.findIndex((value) => value === NAME);
+      FRONT_CREW_OBJ.splice(index, 1);
+
+      e.target.parentNode.parentNode.remove();
+      listingSection();
     });
   }
 }

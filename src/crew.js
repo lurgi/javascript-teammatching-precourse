@@ -25,7 +25,7 @@ export function printCrewPage() {
   });
 }
 
-const FRONT_CREW_OBJ = [];
+const FRONT_CREW_OBJ = ["123", "456"];
 
 function printFrontCrewSection() {
   const ADD_SECTION = document.querySelector("#crew-add");
@@ -44,7 +44,52 @@ function printFrontCrewSection() {
     // TODO : ERROR 이름 5자 이하
     // TODO : ERROR 중복되었으면 실행 X 에러 배출
     FRONT_CREW_OBJ.push(CREW_NAME);
+    printAddCrew();
   });
+
+  listingSection();
+}
+
+function printAddCrew() {}
+
+function listingSection() {
+  const LIST_SECTION = document.querySelector("#crew-list");
+  LIST_SECTION.innerHTML = `
+  <h3>프론트엔드 크루 목록</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th></th>
+        <th>크루</th>
+        <th>관리</th>
+      </tr>
+    </thead>
+    <tbody id="crew-table-body">
+    </tbody>
+  </table>
+  `;
+
+  const CREW_TABLE = document.querySelector("#crew-table-body");
+  FRONT_CREW_OBJ.forEach((name, index) => {
+    const INDEX = index + 1;
+    const ELEMENT = document.createElement("tr");
+    ELEMENT.innerHTML = `
+    <td>${INDEX}</td>
+    <td>${name}</td>
+    <td>
+      <button class="delete-btn">삭제</button>
+    </td>
+    `;
+    CREW_TABLE.appendChild(ELEMENT);
+  });
+
+  const DELETE_BTNS = document.querySelectorAll(".delete-btn");
+  for (let btn of Array.from(DELETE_BTNS)) {
+    btn.addEventListener("click", (e) => {
+      // TODO 삭제 확인 및 삭제
+      console.log("dete", e.target);
+    });
+  }
 }
 
 const BACK_CREW_OBJ = {};
@@ -52,36 +97,3 @@ const BACK_CREW_OBJ = {};
 function printBackCrewSection() {
   //TODO Back Section
 }
-
-/**
- *  <section>
-      <h3>프론트엔드 크루 관리</h3>
-      <form>
-        <label>크루 이름</label>
-        <input type="text" />
-        <button>확인</button>
-      </form>
-    </section>
-    <section>
-      <h3>프론트엔드 크루 목록</h3>
-      <table border="1">
-        <thead>
-          <tr>
-            <th></th>
-            <th>크루</th>
-            <th>관리</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button>삭제</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
- */

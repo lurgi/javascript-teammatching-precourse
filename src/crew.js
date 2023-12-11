@@ -41,8 +41,16 @@ function printFrontCrewSection() {
   CREW_ADD_BTN.addEventListener("click", (e) => {
     const CREW_NAME = document.querySelector("#crew-name-input").value;
     e.preventDefault();
-    // TODO : ERROR 이름 5자 이하
-    // TODO : ERROR 중복되었으면 실행 X 에러 배출
+
+    if (CREW_NAME.length > 5) {
+      window.alert("[ERROR] 이름은 5자 이하만 입력해주세요.");
+      return;
+    }
+    if (FRONT_CREW_OBJ.findIndex((name) => name === CREW_NAME) !== -1) {
+      window.alert("[ERROR] 중복된 이름이 있습니다.");
+      return;
+    }
+
     FRONT_CREW_OBJ.push(CREW_NAME);
     printAddCrew(FRONT_CREW_OBJ.length, CREW_NAME);
   });

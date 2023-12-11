@@ -29,7 +29,7 @@ localStorage를 이용
     - [x] 각 크루 목록 불러오는 기능
     - [x] 크루 추가 기능
     - [x] 크루 추가 이후 UI 섹션 추가
-    - [ ] ERROR 핸들링
+    - [x] ERROR 핸들링
     - [x] 크루 삭제 기능
     - [ ] localStorage
 - [ ] 팀 매칭 관리 페이지

@@ -1,3 +1,8 @@
+const FRONT_CREW_OBJ =
+  JSON.parse(window.localStorage.getItem("front_crew")) || [];
+const BACK_CREW_OBJ =
+  JSON.parse(window.localStorage.getItem("back_crew")) || [];
+
 export function printCrewPage() {
   const MAIN = document.querySelector("main");
   MAIN.innerHTML = `
@@ -25,8 +30,6 @@ export function printCrewPage() {
   });
 }
 
-const FRONT_CREW_OBJ = ["123", "456"];
-
 function printFrontCrewSection() {
   const ADD_SECTION = document.querySelector("#crew-add");
   ADD_SECTION.innerHTML = `
@@ -52,6 +55,7 @@ function printFrontCrewSection() {
     }
 
     FRONT_CREW_OBJ.push(CREW_NAME);
+    window.localStorage.setItem("front_crew", JSON.stringify(FRONT_CREW_OBJ));
     printAddCrew(FRONT_CREW_OBJ.length, CREW_NAME);
   });
 
@@ -102,13 +106,12 @@ function listingSection() {
       const index = FRONT_CREW_OBJ.findIndex((value) => value === NAME);
       FRONT_CREW_OBJ.splice(index, 1);
 
+      window.localStorage.setItem("front_crew", JSON.stringify(FRONT_CREW_OBJ));
       e.target.parentNode.parentNode.remove();
       listingSection();
     });
   }
 }
-
-const BACK_CREW_OBJ = {};
 
 function printBackCrewSection() {
   //TODO Back Section
